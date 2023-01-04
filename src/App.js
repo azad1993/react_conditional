@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import Custombutton from "./components/CustomButton/Custombutton.js";
+
 
 function App() {
+  const [mytext, setMytext] = useState("Click");
+  const [myClass, setMyclass] = useState('block')
+  let buttonClick = (e) => {
+    e.target.className = "warnMessage";
+    setMytext("Clicked");
+  };
+  let buttonHover = () => {
+    setMyclass('none')
+  };
+  let buttonLeave = () => {
+    setMyclass('block')
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+          <Custombutton mytext={mytext} setMyclass={setMyclass} buttonHover={buttonHover} buttonLeave = {buttonLeave}/>
+          <Custombutton mytext={mytext} buttonClick={buttonClick} />
+          <Custombutton mytext={mytext} setMyclass={setMyclass} buttonHover={buttonHover} buttonLeave = {buttonLeave}/>
     </div>
   );
 }
